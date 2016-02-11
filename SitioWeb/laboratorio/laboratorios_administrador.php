@@ -45,6 +45,10 @@
           $labDireSemestre = "";
           $labAdminSemestre = "";
 
+
+          
+
+
           $lab1Pulso = "";
           $lab2Pulso = "";
           $lab3Pulso = "";
@@ -57,6 +61,31 @@
           $labProfePulso = "";
           $labDirePulso = "";
           $labAdminPulso = "";
+
+
+
+          require('../conexion.php');
+          $con = pg_connect($cadena) or die ("Error de Conexion". pg_last_error());
+
+          $sql3 = 'SELECT * FROM laboratorio';
+          $resultado3 = pg_query($con, $sql3);
+
+
+          while($reg2=pg_fetch_assoc($resultado3)){
+              if($reg2['idlaboratorio']==1)$lab1Pulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==2)$lab2Pulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==3)$lab3Pulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==4)$lab4Pulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==5)$lab5Pulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==6)$lab6Pulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==7)$labMacPulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==8)$labElecPulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==9)$labTelePulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==10)$labProfePulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==11)$labDirePulso=$reg2['pulso_laboratorio'];
+              if($reg2['idlaboratorio']==12)$labAdminPulso=$reg2['pulso_laboratorio'];
+          }
+
 
           $lab1Imagen = "img/banner_horizontal_lab1_des.png";
           $lab2Imagen = "img/banner_horizontal_lab2_des.png";
@@ -111,6 +140,12 @@
             $idLectivo = $reg['id'];
           }
 
+
+        
+
+
+
+          
           $sql2 = 'SELECT * FROM control_distributivo D, control_asignaturas A, control_semestre S, auth_user U 
           WHERE D."idLectivo_id"='.$idLectivo.' '."AND D.dia='".$diaactual."'".' AND D."idAsignatura_id"=A.id AND A."idSemestre_id"=S.id AND U.id=D."idDocente_id"';
 
@@ -137,8 +172,8 @@
 
               $lab = $reg['idLab_id'];
 
-              require('../conexion.php');
-              $con = pg_connect($cadena) or die ("Error de Conexion". pg_last_error());
+              //require('../conexion.php');
+              //$con = pg_connect($cadena) or die ("Error de Conexion". pg_last_error());
 
 
               $sql3 = 'SELECT * FROM laboratorio WHERE vinculado_laboratorio='.$lab.'';
@@ -147,11 +182,11 @@
 
               $idLab = '';
               $nombreLab = '';
-              $pulso = '';
+    
               while($reg2=pg_fetch_assoc($resultado3)){
                   $idLab = $reg2['idlaboratorio'];
                   $nombreLab = $reg2['nombre_laboratorio'];
-                  $pulso = $reg2['pulso_laboratorio'];
+                  
               }
 
               
@@ -197,7 +232,9 @@
               if($idLab==11)$labDireHorario = $reg['horario'];
               if($idLab==12)$labAdminHorario = $reg['horario'];
 
-              if($idLab==1)$lab1Pulso = $pulso;
+              /*
+
+              if($idLab==1)$lab1Pulso = 'http://192.168.0.110/pulsos/laboratorio1.php';
               if($idLab==2)$lab2Pulso = $pulso;
               if($idLab==3)$lab3Pulso = $pulso;
               if($idLab==4)$lab4Pulso = $pulso;
@@ -209,6 +246,8 @@
               if($idLab==10)$labProfePulso = $pulso;
               if($idLab==11)$labDirePulso = $pulso;
               if($idLab==12)$labAdminPulso = $pulso;
+
+              */
 
               if($idLab==1)$lab1Docente = $reg['first_name'].' '.$reg['last_name'];
               if($idLab==2)$lab2Docente = $reg['first_name'].' '.$reg['last_name'];
