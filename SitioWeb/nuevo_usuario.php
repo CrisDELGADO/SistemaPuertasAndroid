@@ -66,11 +66,15 @@ require('usuario/sistemaMalla.php');
                             </div>
                             <div class="form-group">
                                 <label>Username</label>
-                                <input class="form-control" placeholder="Username" name="username" type="text" autofocus>
+                                <input class="form-control" placeholder="Username" name="username" type="text" autofocus
+                                onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
                             </div>
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input class="form-control" placeholder="Contraseña" name="password" type="password" autofocus>
+                                <input class="form-control" placeholder="Contraseña" name="password" type="password" autofocus
+                                onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
                             </div>
                             <div class="form-group">
                                 <label>Verificar Contraseña</label>

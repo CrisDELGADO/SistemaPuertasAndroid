@@ -9,6 +9,8 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $password2 = $_POST['password2'];
 
+$passwordE = base64_encode($password2);
+
 
 
 if($nombre!='' && $apellido!='' && $username!=''){
@@ -35,7 +37,7 @@ if($nombre!='' && $apellido!='' && $username!=''){
 	if($existe){
 		echo 'Este Username ya está ocupado';
 	}else{
-		$sql = "UPDATE usuario SET nombre='".$nombre."', apellido='".$apellido."', username='".$username."', password='".$password."', idusuariovinculado=".$idusuariovinculado." WHERE idusuario='".$idusuario."'";
+		$sql = "UPDATE usuario SET nombre='".$nombre."', apellido='".$apellido."', username='".$username."', password='".$passwordE."', idusuariovinculado=".$idusuariovinculado." WHERE idusuario='".$idusuario."'";
 
 		pg_query($con, $sql);
 

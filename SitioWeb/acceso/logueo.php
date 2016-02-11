@@ -4,10 +4,12 @@ session_start();
 $username = $_REQUEST['username'];
 $password = $_REQUEST['password'];
 
+$passwordE = base64_encode($password);
+
 require('../conexion.php');
 $con = pg_connect($cadena) or die ("Error de Conexion". pg_last_error());
 
-$sql = "SELECT * FROM usuario WHERE username='$username' AND password='$password' ";
+$sql = "SELECT * FROM usuario WHERE username='$username' AND password='$passwordE' ";
 
 $resultado = pg_query($con, $sql);
 

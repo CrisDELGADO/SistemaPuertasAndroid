@@ -82,7 +82,7 @@ require('usuario/sistemaMalla.php');
                         <td><?php echo $reg['nombre'] ?></td>
                         <td><?php echo $reg['apellido'] ?></td>
                         <td><?php echo $reg['username'] ?></td>
-                        <td><?php echo $reg['password'] ?></td>
+                        <td><?php echo base64_decode($reg['password']) ?></td>
                         <td> 
                           <div class="btn-group">
                             <a onclick="window.location='editar_usuario.php?idusuario=<?php echo $reg['idusuario'] ?>&idusuariovinculado=<?php echo $reg['idusuariovinculado'] ?>'"  title="Editar" style="cursor: pointer;">

@@ -67,7 +67,24 @@
                             </div>
                             <div class="form-group">
                                 <label>Username</label>
-                                <input class="form-control" placeholder="Username" name="username" type="text" autofocus value="<?php echo $reg['username'] ?>">
+                                <?php
+                                  if($_SESSION['IDROL']==1){
+                                ?>
+                                <input class="form-control" placeholder="Username" name="username" type="text" 
+                                autofocus value="<?php echo $reg['username'] ?>">
+                                <?php
+                                  }else{
+
+                                ?>
+                                <input class="form-control" placeholder="Username" name="username" type="text" 
+                                autofocus value="<?php echo $reg['username'] ?>"
+                                onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
+                                <?php
+                                  }
+
+                                ?>
+
                             </div>
                            
                            
@@ -97,7 +114,34 @@
                             <div id="mensajeFrmCambiarPassword">
 
                             </div>
+
+                            <?php
+                              if($_SESSION['IDROL']!=1){
+                            ?>
                             
+                            <div class="form-group">
+                                <label>Contraseña Actual</label>
+                                <input class="form-control" placeholder="Contraseña" name="password" type="password" 
+                                value=""  onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
+                            </div>
+                            <div class="form-group">
+                                <label>Nueva Contraseña</label>
+                                <input class="form-control" placeholder="Contraseña" name="passwordnueva" type="password" 
+                                value=""  onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
+                            </div>
+                            <div class="form-group">
+                                <label>Verificar Contraseña</label>
+                                <input class="form-control" placeholder="Verificar Contraseña" name="passwordnueva2" 
+                                type="password" value=""  onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
+                            </div>
+
+                            <?php
+                              }else{
+                            ?>
+
                             <div class="form-group">
                                 <label>Contraseña Actual</label>
                                 <input class="form-control" placeholder="Contraseña" name="password" type="password" value="">
@@ -110,6 +154,10 @@
                                 <label>Verificar Contraseña</label>
                                 <input class="form-control" placeholder="Verificar Contraseña" name="passwordnueva2" type="password" value="">
                             </div>
+
+                            <?php
+                              }
+                            ?>
                             
                             <!-- Change this to a button or input when using this as a form -->
                             <button type="submit" class="btn btn-block btn-lg btn-primary" onclick="cambiarContrasena(); return false;"><i class="fa fa-key"></i> Cambiar Contraseña</button>

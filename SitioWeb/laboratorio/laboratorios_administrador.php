@@ -45,6 +45,19 @@
           $labDireSemestre = "";
           $labAdminSemestre = "";
 
+          $lab1Pulso = "";
+          $lab2Pulso = "";
+          $lab3Pulso = "";
+          $lab4Pulso = "";
+          $lab5Pulso = "";
+          $lab6Pulso = "";
+          $labTelePulso = "";
+          $labMacPulso = "";
+          $labElecPulso = "";
+          $labProfePulso = "";
+          $labDirePulso = "";
+          $labAdminPulso = "";
+
           $lab1Imagen = "img/banner_horizontal_lab1_des.png";
           $lab2Imagen = "img/banner_horizontal_lab2_des.png";
           $lab3Imagen = "img/banner_horizontal_lab3_des.png";
@@ -134,9 +147,11 @@
 
               $idLab = '';
               $nombreLab = '';
+              $pulso = '';
               while($reg2=pg_fetch_assoc($resultado3)){
                   $idLab = $reg2['idlaboratorio'];
                   $nombreLab = $reg2['nombre_laboratorio'];
+                  $pulso = $reg2['pulso_laboratorio'];
               }
 
               
@@ -181,6 +196,19 @@
               if($idLab==10)$labProfeHorario = $reg['horario'];
               if($idLab==11)$labDireHorario = $reg['horario'];
               if($idLab==12)$labAdminHorario = $reg['horario'];
+
+              if($idLab==1)$lab1Pulso = $pulso;
+              if($idLab==2)$lab2Pulso = $pulso;
+              if($idLab==3)$lab3Pulso = $pulso;
+              if($idLab==4)$lab4Pulso = $pulso;
+              if($idLab==5)$lab5Pulso = $pulso;
+              if($idLab==6)$lab6Pulso = $pulso;
+              if($idLab==7)$labMacPulso = $pulso;
+              if($idLab==8)$labElecPulso = $pulso;
+              if($idLab==9)$labTelePulso = $pulso;
+              if($idLab==10)$labProfePulso = $pulso;
+              if($idLab==11)$labDirePulso = $pulso;
+              if($idLab==12)$labAdminPulso = $pulso;
 
               if($idLab==1)$lab1Docente = $reg['first_name'].' '.$reg['last_name'];
               if($idLab==2)$lab2Docente = $reg['first_name'].' '.$reg['last_name'];
@@ -228,7 +256,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$lab1Imagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$lab1Pulso."',1);".'" return false;"><img src="'.$lab1Imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -261,7 +289,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$lab2Imagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$lab2Pulso."',2);".'" return false;"><img src="'.$lab2Imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -294,7 +322,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$lab3Imagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$lab3Pulso."',3);".'" return false;"><img src="'.$lab3Imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -327,7 +355,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$lab4Imagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$lab4Pulso."',4);".'" return false;"><img src="'.$lab4Imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -360,7 +388,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$lab5Imagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$lab5Pulso."',5);".'" return false;"><img src="'.$lab5Imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -393,7 +421,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$lab6Imagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$lab6Pulso."',6);".'" return false;"><img src="'.$lab6Imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -426,7 +454,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$labElecImagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$labElecPulso."',8);".'" return false;"><img src="'.$labElecImagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -459,7 +487,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$labMacImagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$labMacPulso."',7);".'" return false;"><img src="'.$labMacImagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -492,7 +520,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$labTeleImagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$labTelePulso."',9);".'" return false;"><img src="'.$labTeleImagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -525,7 +553,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$labProfeImagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$labProfePulso."',10);".'" return false;"><img src="'.$labProfeImagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -558,7 +586,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$labDireImagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$labDirePulso."',11);".'" return false;"><img src="'.$labDireImagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">
@@ -591,7 +619,7 @@
                   <img src="img/banner_vertical.png" width="100%" class="img-rounded">
                 </div>
                 <div class="col-xs-9">
-                  <img src="'.$labAdminImagen.'" width="100%" class="img-rounded">
+                  <a style="cursor:pointer;" onclick="'."guardarregistro('".$labAdminPulso."',12);".'" return false;"><img src="'.$labAdminImagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                   <div class="row">
                     <br>
                     <div class="col-md-12">

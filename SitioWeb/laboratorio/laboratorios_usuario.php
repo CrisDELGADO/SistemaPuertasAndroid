@@ -24,7 +24,7 @@
 
 
             $horaactual = "".date('H').":".date('i');
-            //$horaactual = "07:10";
+            //$horaactual = "09:10";
 
             //Obtengo ultimo periodo
             $sql = "SELECT * FROM control_lectivo WHERE estado=TRUE ORDER BY id DESC LIMIT 1";
@@ -70,14 +70,18 @@
 
 
                 $imagen = '';
+                $pulso = '';
+                $idlaboratorio = 0;
                 while($reg2=pg_fetch_assoc($resultado3)){
                     $imagen = $reg2['imagen_laboratorio'];
+                    $pulso = $reg2['pulso_laboratorio'];
+                    $idlaboratorio = $reg2['idlaboratorio'];
                 }
 
 
                 $respuesta = '<div class="col-md-4">
                                 <br>
-                                <a href="#"><img src="'.$imagen.'" width="100%" class="img-rounded"></a>
+                                <a style="cursor:pointer;" onclick="'."guardarregistro('".$pulso."',".$idlaboratorio.");".'" return false;"><img src="'.$imagen.'" width="100%" class="img-rounded" title="Abrir"></a>
                               </div>';
                  
               }

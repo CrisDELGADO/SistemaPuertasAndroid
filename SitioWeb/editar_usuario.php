@@ -86,15 +86,22 @@ if(isset($_SESSION['IDUSUARIO'])==''){
                             </div>
                             <div class="form-group">
                                 <label>Username</label>
-                                <input class="form-control" placeholder="Username" name="username" type="text" autofocus value="<?php echo $reg['username'] ?>">
+                                <input class="form-control" placeholder="Username" name="username" type="text" autofocus 
+                                value="<?php echo $reg['username'] ?>"
+                                onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
                             </div>
                             <div class="form-group">
                                 <label>Contraseña Actual</label>
-                                <input class="form-control" placeholder="Contraseña" name="password" type="text" autofocus disabled value="<?php echo $reg['password'] ?>">
+                                <input class="form-control" placeholder="Contraseña" name="password" type="text" autofocus 
+                                disabled value="<?php echo base64_decode($reg['password']) ?>">
                             </div>
                             <div class="form-group">
                                 <label>Nueva Contraseña (Opcional)</label>
-                                <input class="form-control" placeholder="Nueva Contraseña" name="password2" type="text" autofocus>
+                                <input class="form-control" placeholder="Nueva Contraseña" name="password2" type="text" 
+                                autofocus
+                                onKeypress="if (event.keyCode < 48 || event.keyCode > 57){ 
+                                if (event.keyCode != 35 && event.keyCode != 42) event.returnValue = false;}">
                             </div>
                           
                             
